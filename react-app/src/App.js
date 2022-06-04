@@ -12,7 +12,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact={true} component={Home} />
           <Route path="/inventories" exact={true} component={InventoryList} />
-          <Route path="/inventories/:id" exact={true} component={InventoryEdit} />
+          <Route path="/inventories/:id" component={InventoryEdit} />
         </Switch>
       </Router>
     )

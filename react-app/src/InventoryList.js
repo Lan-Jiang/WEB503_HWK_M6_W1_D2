@@ -19,7 +19,7 @@ class InventoryList extends Component {
 
         fetch('api/inventories')
             .then(response => response.json())
-            .then(data => this.setState({inventories: data, isLoading: false}))
+            .then(data => this.setState({inventories: data, isLoading: false}));
     }
 
     removeInv = async (id) => {
@@ -32,9 +32,9 @@ class InventoryList extends Component {
         })
         console.log("Remove Done!");
         //update inventory state minus removed item
-        let updateInventories = 
+        let updatedInventories = 
             [...this.state.inventories].filter(i => i._id !== id);
-        this.setState({inventories: updateInventories});
+        this.setState({inventories: updatedInventories});
     }
 
     render() {
@@ -44,7 +44,7 @@ class InventoryList extends Component {
             return <p>Loading...</p>;
         }
 
-        const InventoryList = inventories.map(inventory => {
+        const inventoryList = inventories.map(inventory => {
             return <tr key={inventory._id}>
                 <td style={{whiteSpace: 'nowrap'}}>{inventory.prodname}</td>
                 <td>{inventory.qty}</td>
@@ -69,7 +69,7 @@ class InventoryList extends Component {
                     </ButtonGroup>
                 </td>
             </tr>
-        })
+        });
 
         return (
             <div>
@@ -78,7 +78,7 @@ class InventoryList extends Component {
                     <div className='float-right'>
                         <Button
                             color="success"
-                            className='my-4'
+                            className="my-4"
                             tag={Link}
                             to="/inventories/new"
                         >
@@ -96,7 +96,7 @@ class InventoryList extends Component {
                                 <th width="15%">Actions</th>
                             </tr>
                         </thead>
-                        <tbody>{InventoryList}</tbody>
+                        <tbody>{inventoryList}</tbody>
                     </Table>
                 </Container>
             </div>
